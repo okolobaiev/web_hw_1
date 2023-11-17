@@ -1,4 +1,11 @@
 import json
+from abc import abstractmethod, ABC
+
+class OutputInformation(ABC):
+   
+    @abstractmethod
+    def get_all_notes(self) -> str:
+        pass
 
 
 class Note:

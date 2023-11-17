@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import calendar
 import re
 import json
+from abc import abstractmethod, ABC
 
 
 class Field:
@@ -292,7 +293,14 @@ class Record:
         return f"Name: {self.name.value}, Phones: {phones_str}, Email: {email_str}, Birthday: {birthday_str}"
 
 
-class AddressBook(UserDict):
+class OutputInformation(ABC):
+    
+    @abstractmethod
+    def get_all_records(self) -> str:
+        pass
+
+
+class AddressBook(UserDict, OutputInformation):
     """
     A class representing an address book that stores and
     manages contact records.
